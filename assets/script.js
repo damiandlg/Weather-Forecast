@@ -1,5 +1,5 @@
 const apiKey = "32013e9ea260e4ad54a25c63ea4c16fc";
-var userFormEl = $("#citySearch");
+var userFormEl = $("#searchCity");
 
 var buildSearchHistory = function() {
     var searchHistory = JSON.parse(localStorage.getItem("searchHistory"));
@@ -99,15 +99,14 @@ var getCurrentWeather = function(cityName) {
     var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=imperial&appid=" + apiKey;
 
     fetch(apiUrl).then(function(response) {
-        // only continue if valid city data
         if (response.ok) {
             response.json().then(function(response) {
-                var cityContainerEl = $("#currentCity");
+                var cityContainerEl = $("#currentLoc");
                 cityContainerEl.text(cityName);
                 updateSearchHistory(cityName);
 
                 var location = updateCurrentWeather(response);
-                get5DayForecast(cityName);
+                get5BottomForecast(cityName);
                 
                 var apiUrlUV = "https://api.openweathermap.org/data/2.5/uvi?lat=" + location.lat  + "&lon=" + location.long + "&appid=" + apiKey;
                 return fetch(apiUrlUV);
@@ -124,8 +123,8 @@ var getCurrentWeather = function(cityName) {
     })
 };
 
-var get5DayForecast = function(cityName) {
-    var forecastContainerEl = $("#day-forecast");
+var get5BottomForecast = function(cityName) {
+    var forecastContainerEl = $("#bottom-forecaster");
     forecastContainerEl.html("");
     
     var apiUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&units=imperial&appid=" + apiKey;
@@ -174,7 +173,7 @@ var formSubmitHandler = function(event) {
     if (targetId === "citySearchList") {
         var city = target.text();
     } else if (targetId === "search-submit") {
-        var city = $("#citySearch").val();
+        var city = $("#searchCity").val();
     };
 
     if (city) {
@@ -193,10 +192,10 @@ getCurrentWeather("Dallas");
 
 $("button").click(formSubmitHandler);
 
-$('#citySearch').keypress(function(event){
+$('#searchCity').keypress(function(event){
     var keycode = (event.keyCode ? event.keyCode : event.which);
     if(keycode == '13'){
-        var city = $("#citySearch").val();
+        var city = $("#seatchCity").val();
         if (city) {
             getCurrentWeather(city);
         } else {
