@@ -14,7 +14,7 @@
       <h1 class="heading">Simple Weather App</h1>
       <form>
         <input type="text" placeholder="Search for a city" autofocus>
-        <button type="submit">SUBMIT</button>
+        <button type="submit">SEARCH</button>
         <span class="msg"></span>
       </form>
     </div>
@@ -25,6 +25,25 @@
     </div>
   </section>
     
-  <script src="./assets/script.js"></script>
+  <script src="./assets/index.js">
+
+    const tempEl = document.getElementById('temp')
+    const descEl = document.getElementById('desc')
+    const formEl = document.getElementById('form')
+    const zipInput = document.getElementById('zip')
+
+      // Define event listeners
+      formEl.addEventListener('submit', (e) => {
+        e.preventDefault()
+        const city = cityInput.value
+        getForecast(city, (data) => {})
+      })
+
+
+
+
+
+
+  </script>
 </body>
 </html>
