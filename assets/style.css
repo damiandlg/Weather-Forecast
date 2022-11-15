@@ -1,0 +1,27 @@
+body{
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.weatherFor {
+    border: 1pc solid black;
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 10px;
+    background-color: aqua;
+    box-shadow: 5px 10px 4px -1px gray;
+}
+
+.weatherFor img {
+    float: right;
+}
+
+.weatherFor p {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.weatherFor h2,
+.weatherFor h3 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
