@@ -23,9 +23,6 @@
     </div>
 
 
-
-
-
   <!--SCRIPTS-->
     
   <script src="./assets/index.js"> </script>
@@ -36,12 +33,19 @@
     const tempDisplay = document.getElementById('temp-display')
     const weatherDescription = document.getElementById('weather-desc')
 
+    const apiKey = 'd98d785e9ed33288cf7b14ba756e798f'
+    const units = 'metric'
+   
+    const weather = new Forecast(apiKey, units)
+   
+   
     searchForm.addEventListener('submit', (e) => {
         e.preventDefault()
-        const apiKey = 'd98d785e9ed33288cf7b14ba756e798f'
+       
         const cityName = inputCity.value
+        
 
-        getForecast(cityName, apiKey).then((json) => {
+        weather.getForecast(cityName, apiKey).then((json) => {
         console.log(json)
         tempDisplay.innerHTML = json.main.temp
         weatherDescription.innerHTML = json.weather[0].description
