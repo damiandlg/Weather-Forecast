@@ -11,6 +11,7 @@
 <body>
     <div class="container">
         <h1 id="temp-display">0.0</h1>
+        <small id="weather-desc"></small>
         <form id="form">
             <input
             id="input-city" 
@@ -33,6 +34,7 @@
     const searchForm = document.getElementById('form')
     const inputCity = document.getElementById('input-city')
     const tempDisplay = document.getElementById('temp-display')
+    const weatherDescription = document.getElementById('weather-desc')
 
     searchForm.addEventListener('submit', (e) => {
         e.preventDefault()
@@ -40,7 +42,9 @@
         const cityName = inputCity.value
 
         getForecast(cityName, apiKey).then((json) => {
+        console.log(json)
         tempDisplay.innerHTML = json.main.temp
+        weatherDescription.innerHTML = json.weather[0].description
         }).catch((err) => {
         console.log(err.message)
         })
