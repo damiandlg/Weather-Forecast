@@ -9,20 +9,44 @@
     <link href="assets/style.css" rel="stylesheet">
 </head>
 <body>
+    <div class="container">
+        <h1 id="temp-display">0.0</h1>
+        <form id="form">
+            <input
+            id="input-city" 
+            type="text" 
+            placeholder="enter city">
+            <button type="submit">Search</button>
+        </form>
 
-  <h1 id="temp-display">0.0</h1>
+    </div>
+
+
+
+
+
+  <!--SCRIPTS-->
     
   <script src="./assets/index.js"> </script>
  <script>
 
+    const searchForm = document.getElementById('form')
+    const inputCity = document.getElementById('input-city')
     const tempDisplay = document.getElementById('temp-display')
-    const cityName = 'boston'
-    const apiKey = 'd98d785e9ed33288cf7b14ba756e798f'
-    getForecast(cityName, apiKey).then((json) => {
+
+    searchForm.addEventListener('submit', (e) => {
+        e.preventDefault()
+        const apiKey = 'd98d785e9ed33288cf7b14ba756e798f'
+        const cityName = inputCity.value
+
+        getForecast(cityName, apiKey).then((json) => {
         tempDisplay.innerHTML = json.main.temp
-    }).catch((err) => {
+        }).catch((err) => {
         console.log(err.message)
+        })
+
     })
+    
 
 </script>
     
@@ -30,20 +54,5 @@
 
    </html> 
     
-    //import {getForecast} from '/assets/index.js'
-
-    //const tempEl = document.getElementById('temp')
-    //const descEl = document.getElementById('desc')
-    //const formEl = document.getElementById('form')
-    //const cityInput = document.getElementById('city')
-
-      // Define event listeners
-      //formEl.addEventListener('submit', (e) => {
-        //e.preventDefault()
-        //const city = cityInput.value
-        //getForecast(city, (data) => {
-         //   tempEl.innerHTML = data.main.temp
-           // descEl,innerHTML = data.weather[0].description
-        //})
-     // })
+    
  
