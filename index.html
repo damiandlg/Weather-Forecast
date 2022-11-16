@@ -8,42 +8,42 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <link href="assets/style.css" rel="stylesheet">
 </head>
+<body>
 
-<section class="top-banner">
-    <div class="container">
-      <h1 class="heading">Simple Weather App</h1>
-      <form>
-        <input type="text" placeholder="Search for a city" autofocus>
-        <button type="submit">SEARCH</button>
-        <span class="msg"></span>
-      </form>
-    </div>
-  </section>
-  <section class="ajax-section">
-    <div class="container">
-      <ul class="cities"></ul>
-    </div>
-  </section>
+  <h1 id="temp-display">0.0</h1>
     
-  <script src="./assets/index.js">
+  <script src="./assets/index.js"> </script>
+ <script>
 
-    const tempEl = document.getElementById('temp')
-    const descEl = document.getElementById('desc')
-    const formEl = document.getElementById('form')
-    const zipInput = document.getElementById('zip')
+    const tempDisplay = document.getElementById('temp-display')
+    const cityName = 'boston'
+    const apiKey = 'd98d785e9ed33288cf7b14ba756e798f'
+    getForecast(cityName, apiKey).then((json) => {
+        tempDisplay.innerHTML = json.main.temp
+    }).catch((err) => {
+        console.log(err.message)
+    })
+
+</script>
+    
+</body> 
+
+   </html> 
+    
+    //import {getForecast} from '/assets/index.js'
+
+    //const tempEl = document.getElementById('temp')
+    //const descEl = document.getElementById('desc')
+    //const formEl = document.getElementById('form')
+    //const cityInput = document.getElementById('city')
 
       // Define event listeners
-      formEl.addEventListener('submit', (e) => {
-        e.preventDefault()
-        const city = cityInput.value
-        getForecast(city, (data) => {})
-      })
-
-
-
-
-
-
-  </script>
-</body>
-</html>
+      //formEl.addEventListener('submit', (e) => {
+        //e.preventDefault()
+        //const city = cityInput.value
+        //getForecast(city, (data) => {
+         //   tempEl.innerHTML = data.main.temp
+           // descEl,innerHTML = data.weather[0].description
+        //})
+     // })
+ 

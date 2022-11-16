@@ -1,15 +1,16 @@
-function getForecast(city, callBack) {
-  const apiKey = 'd98d785e9ed33288cf7b14ba756e798f'
-  const units = 'imperial'
-  const path = `https://api.openweathermap.org/data/2.5/weather?zip=${zip}&appid=${apiKey}&units=${units}`
-  fetch(path)
-    .then(res => res.json())
-    .then(json => {
-      callBack(json)
+//Function
+
+function getForecast(cityName, apiKey, success, error) {
+  const path = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}`
+  
+  const p1 = fetch(path)
+  const p2 = p1.then((res) => {
+      return res.json()
     })
-    .catch(err => console.log(err.message))
+    
+   return p2
+    
+    
 }
 
-export{
-  getForecast
-}
+
